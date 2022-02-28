@@ -1,23 +1,30 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
-import { environment } from '../environments/environment';
+
+import { environment } from '@att/environments/environment';
+
+import { CoreModule } from './core/core.module';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
+    // Angular
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    environment.production ? [] : AkitaNgDevtools.forRoot()
+
+    // Akita
+    environment.production ? [] : AkitaNgDevtools.forRoot(),
+
+    // Core module
+    CoreModule,
+
+    // Routing
+    AppRoutingModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
