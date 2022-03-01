@@ -6,6 +6,7 @@ import { first, map } from 'rxjs';
 import { SessionQuery, SessionService } from '@att/core';
 
 import { AuthFormValue } from './interfaces';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'att-auth',
@@ -32,19 +33,32 @@ export class AuthContainer {
         ? this.sessionService.signUp(name as string, email, password)
         : this.sessionService.signIn(email, password);
 
-      request$.subscribe((user) => {
-        const message = showSignUp
-          ? $localize`:@@authRootSnackbarSignedUp:Bienvenido ${user.name}:username:, tu usuario se ha creado correctamente`
-          : $localize`:@@authRootSnackbarSignedIn:Bienvenido de vuelta ${user.name}:username:`;
+      request$.subscribe({
+        next: (user) => {
+          const message = showSignUp
+            ? $localize`:@@authRootSnackbarSignedUp:Bienvenido ${user.name}:username:, tu usuario se ha creado correctamente`
+            : $localize`:@@authRootSnackbarSignedIn:Bienvenido de vuelta ${user.name}:username:`;
 
-        this.matSnackbar.open(message, undefined, {
-          politeness: 'polite',
-          duration: 3000,
-          horizontalPosition: 'start',
-          verticalPosition: 'bottom',
-        });
+          this.matSnackbar.open(message, undefined, {
+            politeness: 'polite',
+            duration: 3000,
+            horizontalPosition: 'start',
+            verticalPosition: 'bottom',
+          });
 
-        this.router.navigate(['..'], { relativeTo: this.route });
+          this.router.navigate(['..'], { relativeTo: this.route });
+        },
+        error: (err: HttpErrorResponse) => {
+          if (err.status === 404 || err.status === 401) {
+            const message = $localize`:@@authRootSnackbarUserNotFound:Las credenciales introducidas no han sido encontradas`;
+            this.matSnackbar.open(message, undefined, {
+              politeness: 'assertive',
+              duration: 5000,
+              horizontalPosition: 'start',
+              verticalPosition: 'bottom',
+            })
+          }
+        },
       });
     });
   }
