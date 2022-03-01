@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <h1 i18n="@@publicHeaderTitle">Noticias</h1>
+
+  <nav>
+    <a
+      *ngIf="user?.role === 'ADMIN_ROLE'"
+      mat-button routerLink="/dashboard"
+      routerLinkActive="active"
+      i18n="@@publicHeaderDashboard"
+    >
+      Panel de control
+    </a>
+  </nav>
+
+  <button mat-button class="user-menu" [matMenuTriggerFor]="userMenu">{{ user?.name }} <mat-icon>expand_more</mat-icon></button>
+</mat-toolbar>
+
+<mat-menu #userMenu="matMenu">
+  <button *ngIf="user?.role === 'USER_ROLE'" type="button" mat-menu-item (click)="turnUserToAdmin.emit()">
+    <mat-icon>admin_panel_settings</mat-icon>
+    <span i18n="@@publicHeaderUserMenuTurnUserToAdmin">Convertir en administrador</span>
+  </button>
+
+  <button type="button" mat-menu-item (click)="logout.emit()">
+    <mat-icon>logout</mat-icon>
+    <span i18n="@@publicHeaderUserMenuLogout">Cerrar sesión</span>
+  </button>
+</mat-menu>

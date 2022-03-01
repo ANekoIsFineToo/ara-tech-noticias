@@ -1,0 +1,17 @@
+nav {
+  margin-inline-start: 1rem;
+
+  .mat-button {
+    &.active {
+      ::ng-deep {
+        .mat-button-focus-overlay {
+          opacity: 0.08;
+        }
+      }
+    }
+  }
+}
+
+.user-menu {
+  margin-inline-start: auto;
+}
