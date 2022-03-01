@@ -1,0 +1,42 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <mat-form-field *ngIf="showSignUp" appearance="outline">
+    <mat-label i18n="@@authFormNameLabel">Nombre</mat-label>
+    <input matInput formControlName="name" required>
+
+    <mat-error i18n="@@authFormNameErrorRequired">El nombre es un campo obligatorio</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label i18n="@@authFormEmailLabel">Correo electrónico</mat-label>
+    <input type="email" matInput formControlName="email" required>
+
+    <mat-error *ngIf="form.get('email')?.hasError('required')" i18n="@@authFormEmailErrorRequired">
+      El correo electrónico es un campo obligatorio
+    </mat-error>
+
+    <mat-error *ngIf="form.get('email')?.hasError('email')" i18n="@@authFormEmailErrorInvalid">
+      El correo electrónico introducido no es válido
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label i18n="@@authFormPasswordLabel">Contraseña</mat-label>
+    <input type="password" matInput formControlName="password" required>
+
+    <mat-error i18n="@@authFormPasswordErrorRequired">La contraseña es un campo obligatorio</mat-error>
+  </mat-form-field>
+
+  <mat-form-field *ngIf="showSignUp" appearance="outline">
+    <mat-label i18n="@@authFormRepeatPasswordLabel">Repetir la contraseña</mat-label>
+    <input type="password" matInput formControlName="repeatPassword" [errorStateMatcher]="repeatPasswordStateMatcher">
+
+    <mat-error i18n="@@authFormRepeatPasswordMismatch">Las contraseñas introducidas no coinciden</mat-error>
+  </mat-form-field>
+
+  <div class="actions">
+    <button type="submit" mat-button color="primary" [disabled]="loading">
+      <ng-container *ngIf="showSignUp" i18n="@@authFormActionSignUp">Registrarse</ng-container>
+      <ng-container *ngIf="!showSignUp" i18n="@@authFormActionSignIn">Iniciar sesión</ng-container>
+    </button>
+  </div>
+</form>

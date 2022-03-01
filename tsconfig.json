@@ -26,6 +26,7 @@
     "paths": {
       "@att/core": ["./src/app/core"],
       "@att/shared": ["./src/app/shared"],
+      "@att/domain": ["./src/app/domain"],
       "@att/environments/*": ["./src/environments/*"]
     }
   },

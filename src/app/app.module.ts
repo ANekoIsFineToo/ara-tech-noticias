@@ -6,11 +6,11 @@ import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { environment } from '@att/environments/environment';
 
 import { CoreModule } from './core/core.module';
-import { AppComponent } from './app.component';
+import { AppContainer } from './app.container';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppContainer],
   imports: [
     // Angular
     BrowserModule,
@@ -25,6 +25,6 @@ import { AppRoutingModule } from './app-routing.module';
     // Routing
     AppRoutingModule,
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppContainer],
 })
 export class AppModule { }

@@ -1,0 +1,15 @@
+:host {
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.att-auth-alternate,
+.form-card {
+  width: 100%;
+  max-width: 25rem;
+}

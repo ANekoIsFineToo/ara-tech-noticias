@@ -1,0 +1,25 @@
+<nav mat-tab-nav-bar mat-stretch-tabs>
+  <a
+    #signUpRoute="routerLinkActive"
+    mat-tab-link
+    routerLink="../sign-up"
+    routerLinkActive=""
+    [active]="signUpRoute.isActive"
+    [disabled]="loading"
+    i18n="@@authAlternateSignUp"
+  >
+    Registrarse
+  </a>
+
+  <a
+    #signInRoute="routerLinkActive"
+    mat-tab-link
+    routerLink="../sign-in"
+    routerLinkActive=""
+    [active]="signInRoute.isActive"
+    [disabled]="loading"
+    i18n="@@authAlternateSignIn"
+  >
+    Iniciar sesión
+  </a>
+</nav>

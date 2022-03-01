@@ -29,8 +29,15 @@ $ara-tech-test-theme: mat.define-light-theme((
 
 // Emit theme-dependent styles for common features used across multiple components.
 @include mat.core-theme($ara-tech-test-theme);
+@include mat.button-theme($ara-tech-test-theme);
+@include mat.card-theme($ara-tech-test-theme);
+@include mat.form-field-theme($ara-tech-test-theme);
+@include mat.input-theme($ara-tech-test-theme);
+@include mat.snack-bar-theme($ara-tech-test-theme);
+@include mat.tabs-theme($ara-tech-test-theme);
 
 /* You can add global styles to this file, and also import other style files */
 
+* { box-sizing: border-box; }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

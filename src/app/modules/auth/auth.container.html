@@ -1,0 +1,5 @@
+<att-auth-alternate [loading]="loading$ | async"></att-auth-alternate>
+
+<mat-card class="form-card">
+  <att-auth-form [showSignUp]="showSignUp$ | async" [loading]="loading$ | async" (send)="send($event)"></att-auth-form>
+</mat-card>
