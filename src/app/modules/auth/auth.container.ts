@@ -32,10 +32,10 @@ export class AuthContainer {
         ? this.sessionService.signUp(name as string, email, password)
         : this.sessionService.signIn(email, password);
 
-      request$.subscribe(() => {
+      request$.subscribe((user) => {
         const message = showSignUp
-          ? $localize`:@@authRootSnackbarSignedUp:Bienvenido ${name}:username:, tu usuario se ha creado correctamente`
-          : $localize`:@@authRootSnackbarSignedIn:Bienvenido de vuelta ${name}:username:`;
+          ? $localize`:@@authRootSnackbarSignedUp:Bienvenido ${user.name}:username:, tu usuario se ha creado correctamente`
+          : $localize`:@@authRootSnackbarSignedIn:Bienvenido de vuelta ${user.name}:username:`;
 
         this.matSnackbar.open(message, undefined, {
           politeness: 'polite',
