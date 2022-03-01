@@ -17,6 +17,6 @@ export class AuthService {
   }
 
   turnUserToAdmin(request: TurnUserToAdminRequest): Observable<TurnUserToAdminResponse> {
-    return this.http.post<TurnUserToAdminResponse>(`att://${request.uuid}`, null);
+    return this.http.post<TurnUserToAdminResponse>(`att://turn-admin/${request.uuid}`, null);
   }
 }
