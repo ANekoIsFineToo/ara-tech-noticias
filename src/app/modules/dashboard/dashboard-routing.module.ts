@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { NewsResolver } from '@att/shared';
+import { NewResolver, NewsResolver } from '@att/shared';
 
+import { NewsAddContainer, NewsEditContainer } from './containers';
 import { DashboardContainer } from './dashboard.container';
 
 const routes: Routes = [
@@ -10,6 +11,15 @@ const routes: Routes = [
     path: '',
     resolve: { news: NewsResolver },
     component: DashboardContainer,
+    children: [
+      {
+        path: 'news',
+        children: [
+          { path: 'add', component: NewsAddContainer },
+          { path: ':newUuid/edit', component: NewsEditContainer, resolve: { new: NewResolver } },
+        ],
+      }
+    ],
   },
 ];
 
