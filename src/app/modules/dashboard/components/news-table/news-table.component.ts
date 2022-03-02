@@ -2,6 +2,7 @@ import {
   AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnChanges, Output, SimpleChanges, ViewChild
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { New } from '@att/domain';
@@ -19,6 +20,7 @@ export class NewsTableComponent implements OnChanges, AfterViewInit {
 
   @HostBinding('class.att-dashboard-news-table') readonly defaultClass = true;
 
+  @ViewChild(MatSort) matSort?: MatSort;
   @ViewChild(MatPaginator) matPaginator?: MatPaginator;
 
   readonly dataSource = new MatTableDataSource<New>();
@@ -32,6 +34,7 @@ export class NewsTableComponent implements OnChanges, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.dataSource.sort = this.matSort ?? null;
     this.dataSource.paginator = this.matPaginator ?? null;
   }
 }
