@@ -7,7 +7,7 @@ import {
 } from '@att/domain';
 
 @Injectable({ providedIn: 'root' })
-export class NewsService {
+export class NewsHttpService {
   constructor(private readonly http: HttpClient) { }
 
   list(): Observable<ListNewsResponse> {

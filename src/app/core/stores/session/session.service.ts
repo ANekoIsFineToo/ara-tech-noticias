@@ -5,12 +5,12 @@ import { map, Observable, tap } from 'rxjs';
 
 import { Role, User } from '@att/domain';
 
-import { AuthService } from '../../services';
+import { AuthHttpService } from '../../services';
 import { SessionStore } from './session.store';
 
 @Injectable({ providedIn: 'root' })
 export class SessionService {
-  constructor(private readonly sessionStore: SessionStore, private readonly authService: AuthService) { }
+  constructor(private readonly sessionStore: SessionStore, private readonly authService: AuthHttpService) { }
 
   signIn(email: string, password: string): Observable<User> {
     return this.authService.signIn({ email, password }).pipe(

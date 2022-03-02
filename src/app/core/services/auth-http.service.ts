@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { SignInRequest, SignInResponse, SignUpRequest, SignUpResponse, TurnUserToAdminRequest, TurnUserToAdminResponse } from '@att/domain';
 
 @Injectable({ providedIn: 'root' })
-export class AuthService {
+export class AuthHttpService {
   constructor(private readonly http: HttpClient) { }
 
   signUp(request: SignUpRequest): Observable<SignUpResponse> {

@@ -35,9 +35,14 @@ $ara-tech-test-theme: mat.define-light-theme((
 @include mat.icon-theme($ara-tech-test-theme);
 @include mat.input-theme($ara-tech-test-theme);
 @include mat.menu-theme($ara-tech-test-theme);
+@include mat.paginator-theme($ara-tech-test-theme);
+@include mat.select-theme($ara-tech-test-theme); // required by paginator theme
 @include mat.snack-bar-theme($ara-tech-test-theme);
+@include mat.sort-theme($ara-tech-test-theme);
+@include mat.table-theme($ara-tech-test-theme);
 @include mat.tabs-theme($ara-tech-test-theme);
 @include mat.toolbar-theme($ara-tech-test-theme);
+@include mat.tooltip-theme($ara-tech-test-theme);
 
 /* You can add global styles to this file, and also import other style files */
 

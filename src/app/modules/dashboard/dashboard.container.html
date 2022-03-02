@@ -1,0 +1,14 @@
+<div class="content">
+  <a mat-raised-button color="accent" routerLink="news/add" class="create-new" i18n="@@dashboardRootCreateNew">
+    Nueva noticia
+  </a>
+
+  <att-dashboard-news-table
+    class="mat-elevation-z8"
+    [news]="news$ | async"
+    [loading]="loading$ | async"
+    (delete)="deleteNew($event)"
+  ></att-dashboard-news-table>
+</div>
+
+<router-outlet></router-outlet>
