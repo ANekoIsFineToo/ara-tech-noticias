@@ -2,6 +2,7 @@
   mat-table
   matSort
   [dataSource]="dataSource"
+  [matSortDisabled]="loading"
   aria-label="Listado de noticias"
   i18n-aria-label="@@dashboardNewsTableDescription"
 >
@@ -31,6 +32,7 @@
         matTooltip="Editar la noticia"
         i18n-matTooltip="@@dashboardNewsTableActionsEdit"
         [routerLink]="['news', row.uuid, 'edit']"
+        [disabled]="loading"
       >
         <mat-icon>edit</mat-icon>
       </a>
@@ -40,6 +42,7 @@
         color="warn"
         matTooltip="Eliminar la noticia"
         i18n-matTooltip="@@dashboardNewsTableActionsDelete"
+        [disabled]="loading"
         (click)="delete.emit(row.uuid)"
       >
         <mat-icon>delete</mat-icon>
@@ -55,6 +58,7 @@
   showFirstLastButtons
   [length]="dataSource.data.length"
   [pageSizeOptions]="pageSizeOptions"
+  [disabled]="loading"
   aria-label="Cambiar la página del listado de noticias"
   i18n-aria-label="@@dashboardNewsTablePaginatorLabel"
 ></mat-paginator>

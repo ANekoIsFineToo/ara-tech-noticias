@@ -1,5 +1,12 @@
 <div class="content">
-  <a mat-raised-button color="accent" routerLink="news/add" class="create-new" i18n="@@dashboardRootCreateNew">
+  <a
+    mat-raised-button
+    color="accent"
+    routerLink="news/add"
+    class="create-new"
+    [disabled]="loading$ | async"
+    i18n="@@dashboardRootCreateNew"
+  >
     Nueva noticia
   </a>
 
