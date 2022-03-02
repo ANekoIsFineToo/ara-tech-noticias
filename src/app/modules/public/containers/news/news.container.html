@@ -1,0 +1,6 @@
+<mat-card *ngFor="let entity of news$ | async; trackBy: trackByUuid">
+  <mat-card-title>{{ entity.title }}</mat-card-title>
+  <mat-card-content>
+    <p>{{ entity.description }}</p>
+  </mat-card-content>
+</mat-card>

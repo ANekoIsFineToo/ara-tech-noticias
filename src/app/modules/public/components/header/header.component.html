@@ -3,6 +3,16 @@
 
   <nav>
     <a
+      mat-button
+      routerLink="/"
+      [routerLinkActiveOptions]="{ exact: true }"
+      routerLinkActive="active"
+      i18n="@@publicHeaderHome"
+    >
+      Inicio
+    </a>
+
+    <a
       *ngIf="user?.role === 'ADMIN_ROLE'"
       mat-button routerLink="/dashboard"
       routerLinkActive="active"

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '@att/shared';
 
 import { HeaderComponent } from './components';
+import { NewsContainer } from './containers';
 import { PublicContainer } from './public.container';
 import { PublicRoutingModule } from './public-routing.module';
 
@@ -10,6 +11,7 @@ import { PublicRoutingModule } from './public-routing.module';
   declarations: [
     // Containers
     PublicContainer,
+    NewsContainer,
 
     // Components
     HeaderComponent,
