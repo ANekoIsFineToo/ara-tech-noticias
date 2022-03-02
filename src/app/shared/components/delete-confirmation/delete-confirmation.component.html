@@ -1,0 +1,13 @@
+<h1 mat-dialog-title i18n="@@sharedDeleteConfirmationTitle">Confirmar la eliminación</h1>
+
+<div mat-dialog-content>
+  <p i18n="@@sharedDeleteConfirmationMessage">
+    Eliminar es una acción definitiva que no se puede deshacer, ¿desea continuar?
+  </p>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false" cdkFocusInitial i18n="@@sharedDeleteConfirmationCancel">Cancelar</button>
+  <button mat-button color="warn" [mat-dialog-close]="true" i18n="@@sharedDeleteConfirmationDelete">Eliminar</button>
+</div>
+
