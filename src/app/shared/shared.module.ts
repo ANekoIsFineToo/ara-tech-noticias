@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -17,6 +17,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { DeleteConfirmationDialog } from './dialogs';
+
+const MAT_SNACKBAR_CONFIG: MatSnackBarConfig<void> = {
+  politeness: 'polite',
+  duration: 3000,
+  horizontalPosition: 'start',
+  verticalPosition: 'bottom',
+};
 
 @NgModule({
   declarations: [
@@ -27,6 +34,9 @@ import { DeleteConfirmationDialog } from './dialogs';
     // Angular Material
     MatButtonModule,
     MatDialogModule,
+  ],
+  providers: [
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: MAT_SNACKBAR_CONFIG },
   ],
   exports: [
     // Angular
