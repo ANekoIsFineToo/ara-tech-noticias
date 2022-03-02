@@ -37,4 +37,8 @@ export class NewsTableComponent implements OnChanges, AfterViewInit {
     this.dataSource.sort = this.matSort ?? null;
     this.dataSource.paginator = this.matPaginator ?? null;
   }
+
+  trackByUuid(index: number, newEntity: New): string {
+    return newEntity.uuid;
+  }
 }
