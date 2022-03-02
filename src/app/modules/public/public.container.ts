@@ -25,12 +25,7 @@ export class PublicContainer {
   turnUserToAdmin(): void {
     this.user$.pipe(first(), mergeMap(user => this.sessionService.turnUserToAdmin(user?.uuid as string))).subscribe((user) => {
       const message = $localize`:@@publicRootSnackBarUserTurnedToAdmin:${user.name}:username: ahora es administrador`;
-      this.matSnackBar.open(message, undefined, {
-        politeness: 'polite',
-        duration: 3000,
-        horizontalPosition: 'start',
-        verticalPosition: 'bottom',
-      });
+      this.matSnackBar.open(message);
     });
   }
 

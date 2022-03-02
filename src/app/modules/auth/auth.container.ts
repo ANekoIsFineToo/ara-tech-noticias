@@ -21,7 +21,7 @@ export class AuthContainer {
   constructor(
     private readonly router: Router,
     private readonly route: ActivatedRoute,
-    private readonly matSnackbar: MatSnackBar,
+    private readonly matSnackBar: MatSnackBar,
     private readonly sessionService: SessionService,
     private readonly sessionQuery: SessionQuery,
   ) { }
@@ -39,23 +39,16 @@ export class AuthContainer {
             ? $localize`:@@authRootSnackbarSignedUp:Bienvenido ${user.name}:username:, tu usuario se ha creado correctamente`
             : $localize`:@@authRootSnackbarSignedIn:Bienvenido de vuelta ${user.name}:username:`;
 
-          this.matSnackbar.open(message, undefined, {
-            politeness: 'polite',
-            duration: 3000,
-            horizontalPosition: 'start',
-            verticalPosition: 'bottom',
-          });
+          this.matSnackBar.open(message);
 
           this.router.navigate(['..'], { relativeTo: this.route });
         },
         error: (err: HttpErrorResponse) => {
           if (err.status === 404 || err.status === 401) {
             const message = $localize`:@@authRootSnackbarUserNotFound:Las credenciales introducidas no han sido encontradas`;
-            this.matSnackbar.open(message, undefined, {
+            this.matSnackBar.open(message, undefined, {
               politeness: 'assertive',
               duration: 5000,
-              horizontalPosition: 'start',
-              verticalPosition: 'bottom',
             })
           }
         },

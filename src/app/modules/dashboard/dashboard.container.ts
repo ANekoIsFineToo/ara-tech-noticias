@@ -30,12 +30,7 @@ export class DashboardContainer {
 
     ref.afterClosed().pipe(mergeMap((confirmed) => confirmed ? this.newsService.delete(uuid) : EMPTY)).subscribe(() => {
       const message = $localize`:@@dashboardRootDeleteConfirmationSuccess:La noticia ha sido eliminada`;
-      this.matSnackBar.open(message, undefined, {
-        politeness: 'polite',
-        horizontalPosition: 'start',
-        verticalPosition: 'bottom',
-        duration: 3000,
-      })
+      this.matSnackBar.open(message);
     });
   }
 }
