@@ -1,7 +1,7 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
-import { ProtocolInterceptor } from './interceptors';
+import { ProtocolInterceptor, TokenInterceptor } from './interceptors';
 
 @NgModule({
   imports: [
@@ -9,6 +9,7 @@ import { ProtocolInterceptor } from './interceptors';
     HttpClientModule,
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     // this HTTP interceptor should be always the last to avoid race conditions
     { provide: HTTP_INTERCEPTORS, useClass: ProtocolInterceptor, multi: true },
   ],
