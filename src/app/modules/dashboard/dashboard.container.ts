@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, mergeMap } from 'rxjs';
 
-import { DeleteConfirmationComponent, NewsQuery, NewsService } from '@att/shared';
+import { DeleteConfirmationDialog, NewsQuery, NewsService } from '@att/shared';
 
 @Component({
   selector: 'att-dashboard',
@@ -23,7 +23,7 @@ export class DashboardContainer {
   ) { }
 
   deleteNew(uuid: string): void {
-    const ref = this.matDialog.open(DeleteConfirmationComponent, {
+    const ref = this.matDialog.open(DeleteConfirmationDialog, {
       role: 'alertdialog',
       ariaLabel: $localize`:@@dashboardRootDeleteNewConfirmationLabel:Confirmar la eliminación de una noticia`,
     });

@@ -1,4 +1,4 @@
-export * from './components';
+export * from './dialogs';
 export * from './interfaces';
 export * from './resolvers';
 export * from './stores';

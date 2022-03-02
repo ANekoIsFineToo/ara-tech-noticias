@@ -16,11 +16,12 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { DeleteConfirmationComponent } from './components';
+import { DeleteConfirmationDialog } from './dialogs';
 
 @NgModule({
   declarations: [
-    DeleteConfirmationComponent,
+    // Dialogs
+    DeleteConfirmationDialog,
   ],
   imports: [
     // Angular Material
@@ -49,7 +50,7 @@ import { DeleteConfirmationComponent } from './components';
     MatTooltipModule,
 
     // Components
-    DeleteConfirmationComponent,
+    DeleteConfirmationDialog,
   ],
 })
 export class SharedModule { }
